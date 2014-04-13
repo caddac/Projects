@@ -1,4 +1,4 @@
-﻿@model IEnumerable<dcavaletto.Models.MovieDB>
+﻿@model IEnumerable<dcavaletto.Models.Movie>
 
 @{
     ViewBag.Title = "Index";
@@ -18,7 +18,13 @@
             Director
         </th>
         <th>
+            Genre
+        </th>
+        <th>
             Date
+        </th>
+        <th>
+            Rating
         </th>
         <th></th>
     </tr>
@@ -32,8 +38,15 @@
             @Html.DisplayFor(modelItem => item.Director)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
+                <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dcavaletto.Models;
+using MvcMovie.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -33,6 +35,8 @@ namespace dcavaletto
 
         protected void Application_Start()
         {
+            Database.SetInitializer<MovieDBContext>(new MovieInitializer());
+
             AreaRegistration.RegisterAllAreas();
 
             // Use LocalDB for Entity Framework by default

@@ -6,15 +6,21 @@ using System.Web.Mvc;
 
 namespace dcavaletto.Controllers
 {
-    public class HomeController : Controller
+    public class HelloWorldController : Controller
     {
+        //
+        // GET: /HelloWorld/
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Welcome(string name, int numTimes = 1)
         {
+            ViewBag.message = "Hello " + name;
+            ViewBag.numTimes = numTimes;
+
             return View();
         }
     }

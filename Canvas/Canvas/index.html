@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Drawing Canvas</title>
+    <style>
+        .fl_left {float:left;}
+        body
+        {
+            margin:0;
+            text-align:center;
+            padding:0;
+            padding-top:10px;
+        }
+        #contentWrapper
+        {
+            width:590px;
+            border:0px;
+            padding:0;
+            margin:0px auto;
+        }
+    </style>
+</head>
+    <script lang="javascript" src ="Methods.js">
+
+</script>
+    <script lang="javascript" src ="EventHandlers.js">
+
+</script>
+    <script lang="javascript" src ="StartUp.js">
+
+</script>
+
+<body onload="start_canvas();" class=" hasGoogleVoiceExt">
+    <div id="contentWrapper">
+        <div id="multiCanvasWrapper" style="padding-left:22px; margin: 10px; " class="fl_left">
+            <div id="canvasWrapper" style="position:relative; width:500px; height:545px; margin: 10px; border: 1px solid black;" class="fl_left">
+                <canvas id="grid" tabindex="1" width="500" height="500" style="position: absolute; left:0; top: 0; z-index: 0;"></canvas>
+                <canvas id="static" tabindex="2" width="500" height="500" style="position: absolute; left:0; top: 0; z-index: 1;"></canvas>
+                <canvas id="dynamic" tabindex="3" width="500" height="500" style="position: absolute; left:0; top: 0; z-index: 2;"></canvas>
+                <canvas id="top" tabindex="4" width="500" height="500" style="position: absolute; left:0; top: 0; z-index: 3;"></canvas>
+                <div id="radioPanel" style="position: absolute; top:500px; width:495px; overflow:auto; border:3px solid black; clear:both;">
+                    <div style="text-align: center; width:100%; height: 100%; margin: 0px auto;">
+                        <div id="options1" style="width: 100%; text-align: center; margin: 0px auto;">
+                            <label style="padding-left: 5px; margin-left: 3px; margin-right:3px;" class="fl_left" for="sq">Square</label>
+                            <input type="radio" style="margin-right:7px;" name="shapeRdoBtn" class="fl_left" id="sq" value="square"/>
+                            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="cr">Circle</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" id="cr" value="circle"/>
+                            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="tr">Triangle</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" id="tr" value="triangle"/>
+                            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="el">Ellipse</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" id="el" value="ellipse"/>
+                            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="ln">Line</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" id="ln" value="line"/>
+                            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="txt">Text</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" id="txt" value="text"/>
+                                                        <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="plygn">Polygon</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" id="plygn" value="polygon"/>
+                        </div>
+                        <div id="options2" style="clear:both; width: 57%; text-align: center; margin: 0px auto;">
+                            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="selection">Selection</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" id="Radio1" value="selection"/>
+                            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="singleselection">Single Selection</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" id="singleselection" value="SingleSelection"/>
+                            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="move">Move</label>
+                            <input type="radio" style="margin-right:7px;"name="shapeRdoBtn" class="fl_left" onselect="setShape()" id="move" value="move"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" onclick="saveData()">Save Data</button>
+        <button type="button" onclick="loadData()">Load Data</button>
+        <button type="button" onclick="clearAll()">Clear All</button>
+        <button type="button" onclick="deleteItem()">Delete</button>
+        <button type="button" onclick="insertItem()">Insert</button>
+        <button type="button" onclick="saveSelection()">Save Selected</button>
+        <button type="button" onclick="group()">Group</button>
+        <button type="button" onclick="ungroup()">Ungroup</button>
+        <button type="button" onclick="propagate()">Propagate</button>
+        <div id="output" style="clear:both; padding-top: 10px; width: 100%; text-align: center; margin: 0px auto;">
+            <label style="margin-left: 3px; margin-right:3px;" class="fl_left" for="outputText">Saved Data:</label>
+            <textarea id="outputText" rows="1" cols="50" readonly="readonly">
+            </textarea>
+        </div>
+    </div>
+</body>
+
+
+</html>

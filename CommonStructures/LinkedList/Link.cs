@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,13 @@ namespace LinkedList
             }
         }
 
+        public void AddHead(T data)
+        {
+            Node n = new Node(data);
+            n.next = head;
+            head = n;
+        }
+
         public void Append(T data)
         {
             Node ptr = head;
@@ -52,15 +60,20 @@ namespace LinkedList
             ptr.next = new Node(data);
         }
 
-        public IEnumerable<T> GetEnumerator()
+        public T getNext(int index = 0)
         {
+            //if no index is given or 
+            if (index == 0)
+                return head.data;
+            
+            int count = 0;
             Node ptr = head;
-
-            while (ptr.next != null)
+            while (count < index)
             {
-                yield return ptr.data;
                 ptr = ptr.next;
+                count++;
             }
+            return ptr.data;
         }
     }
 }

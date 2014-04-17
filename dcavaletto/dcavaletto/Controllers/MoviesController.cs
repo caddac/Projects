@@ -24,10 +24,14 @@ namespace dcavaletto.Controllers
         //
         // GET: /Movies/Details/5
 
-        public ViewResult Details(int id)
+        public ActionResult Details(int id)
         {
-            Movie moviedb = db.Movies.Find(id);
-            return View(moviedb);
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
         }
 
         //
@@ -84,20 +88,24 @@ namespace dcavaletto.Controllers
         //
         // GET: /Movies/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            Movie moviedb = db.Movies.Find(id);
-            return View(moviedb);
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+                return HttpNotFound();
+            return View(movie);
         }
 
         //
         // POST: /Movies/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id = 0)
         {
-            Movie moviedb = db.Movies.Find(id);
-            db.Movies.Remove(moviedb);
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+                return HttpNotFound();
+            db.Movies.Remove(movie);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
